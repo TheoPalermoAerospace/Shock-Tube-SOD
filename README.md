@@ -45,11 +45,11 @@ The system eigenvalues are $\lambda_1 = u$, $\lambda_2 = u + a$, and $\lambda_3 
 
 ### Finite Volume Scheme
 
-The time update uses a first-order upwind discretization:
+The hyperbolic nature of the problem allows the use of time-marching schemes. The time update of the state vector $\mathbf{U}$ uses a first-order upwind discretization:
 
 $$\mathbf{U}_i^{n+1} = \mathbf{U}_i^n - \frac{\Delta t}{\Delta x} \left[ \left( \mathbf{F}_i^+ + \mathbf{F}_{i+1}^- \right) - \left( \mathbf{F}_{i-1}^+ + \mathbf{F}_i^- \right) \right]$$
 
-The time step is determined by the CFL condition:
+The time step $\Delta t$ is determined by the CFL condition:
 
 $$\Delta t = \text{CFL} \cdot \frac{\Delta x}{\max_i \left( |u_i| + a_i \right)}$$
 
@@ -85,7 +85,6 @@ $$\Delta t = \text{CFL} \cdot \frac{\Delta x}{\max_i \left( |u_i| + a_i \right)}
 | `maior_velocidade_st` | Computes $\max(\|u\| + a)$ for the CFL time step |
 | `produto_matriz_st` | $3 \times 3$ matrix–matrix product |
 | `produto_matriz_vetor_st` | $3 \times 3$ matrix–vector product |
-| `calcular_residuos_st` | Computes $L_\infty$ residuals of the equations |
 
 ---
 
